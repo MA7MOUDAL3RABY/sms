@@ -1,0 +1,8 @@
+html:lang("ar") * {
+  font-family: "Cairo", sans-serif !important;
+}
+
+.notify {
+  z-index: 99999;
+}
+

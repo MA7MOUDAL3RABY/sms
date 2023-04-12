@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{app()->getLocale()}}">
 
 <head>
     <meta charset="utf-8">
@@ -9,52 +9,45 @@
     <meta name="author" content="potenzaglobalsolutions.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     @include('layouts.head')
+    @notifyCss
 </head>
 
 <body>
-
     <div class="wrapper">
 
-        <!--=================================
- preloader -->
+        <!--================== preloader ================== -->
 
         <div id="pre-loader">
             <img src="assets/images/pre-loader/loader-01.svg" alt="">
         </div>
 
-        <!--=================================
- preloader -->
+        <!--================== preloader ================== -->
 
         @include('layouts.main-header')
 
         @include('layouts.main-sidebar')
 
-        <!--=================================
- Main content -->
-        <!-- main-content -->
+        <!--================== Main content ================== -->
         <div class="content-wrapper">
 
             @yield('page-header')
 
             @yield('content')
 
-            <!--=================================
- wrapper -->
+            <!--================== wrapper ================== -->
 
-            <!--=================================
- footer -->
-
+            <!--================== footer ================== -->
             @include('layouts.footer')
-        </div><!-- main content wrapper end-->
+        </div>
+        <!-- main content wrapper end-->
     </div>
     </div>
     </div>
 
-    <!--=================================
- footer -->
-
+    <!--================== footer ================== -->
+    <x-notify::notify />
     @include('layouts.footer-scripts')
-
+    @notifyJs
 </body>
 
 </html>

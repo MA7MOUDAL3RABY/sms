@@ -22,7 +22,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/dashboard';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -59,11 +59,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::middleware(['web', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])
+        Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'web',  'guest'])
             ->prefix(LaravelLocalization::setLocale())
             ->namespace($this->namespace)
             ->group(base_path('routes/auth.php'));
-        Route::middleware(['web', 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ])
+
+        Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'web', 'auth'])
+            ->prefix(LaravelLocalization::setLocale() . '/dashboard')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/admin.php'));
+
+        Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'web', 'guest'])
             ->prefix(LaravelLocalization::setLocale())
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
