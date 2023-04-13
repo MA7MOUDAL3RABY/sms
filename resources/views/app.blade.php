@@ -28,7 +28,7 @@
         @include('layouts.main-sidebar')
 
         <!--================== Main content ================== -->
-        <div class="content-wrapper">
+        <div class="content-wrapper position-relative">
 
             @yield('page-header')
 

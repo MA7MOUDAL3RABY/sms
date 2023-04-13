@@ -59,7 +59,7 @@ return [
     |   'foo::*',
     |   'foo::bar.*',
     */
-    'exclude' => [],
+    'exclude' => ['validation*', 'auth*', 'pagination*', 'passwords*'],
 
     /**
      * Primary sheet (tab) used for the translations.

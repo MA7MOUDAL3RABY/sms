@@ -16,6 +16,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     protected $namespace = 'App\Http\Controllers';
+    protected $AdminNamespace = 'App\Http\Controllers\Admin';
 
     /**
      * The path to the "home" route for your application.
@@ -66,7 +67,7 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'web', 'auth'])
             ->prefix(LaravelLocalization::setLocale() . '/dashboard')
-            ->namespace($this->namespace)
+            ->namespace($this->AdminNamespace)
             ->group(base_path('routes/admin.php'));
 
         Route::middleware(['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'web', 'guest'])

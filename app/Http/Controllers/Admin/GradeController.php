@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Grades;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Grade;
 use App\Http\Controllers\Controller;
@@ -18,7 +18,7 @@ class GradeController extends Controller
     public function index()
     {
         $grades = Grade::all();
-        return view('pages.grades.index', ['grades' => $grades]);
+        return view('pages.grades.list', ['grades' => $grades]);
     }
 
     /**
@@ -40,15 +40,17 @@ class GradeController extends Controller
     public function store(GradesStoreRequest $request)
     {
 
+        return $request;
+
         try {
             $insert = Grade::create([
                 'name' => [
-                    'en' => $request->name_en,
-                    'ar' => $request->name_ar,
+                    'en' => $request->name['en'],
+                    'ar' => $request->name['ar'],
                 ],
                 'notes' => [
-                    'en' => $request->notes_ar,
-                    'ar' => $request->notes_en,
+                    'en' => $request->notes['en'],
+                    'ar' => $request->notes['ar'],
                 ],
             ]);
 
@@ -56,7 +58,7 @@ class GradeController extends Controller
                 notify()->success(trans('admin.messages.save', ['name' => trans('admin.grade')]));
             }
         } catch (Exception $e) {
-            notify()->error($e);
+            redirect()->back()->withErrors(notify()->error($e->getMessage()));
         }
         return redirect()->back();
     }
@@ -69,7 +71,6 @@ class GradeController extends Controller
      */
     public function show(Grade $grade)
     {
-        //
     }
 
     /**
@@ -80,7 +81,7 @@ class GradeController extends Controller
      */
     public function edit(Grade $grade)
     {
-        //
+        return view('pages.grades.edit', compact('grade'));
     }
 
     /**
@@ -90,9 +91,24 @@ class GradeController extends Controller
      * @param  \App\Grade  $grade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grade $grade)
+    public function update(GradesStoreRequest $request, Grade $grade)
     {
-        //
+        try {
+            $grade->update([
+                'name' => [
+                    'en' => $request->name['en'],
+                    'ar' => $request->name['ar'],
+                ],
+                'notes' => [
+                    'en' => $request->notes['en'],
+                    'ar' => $request->notes['ar'],
+                ],
+            ]);
+            notify()->success(trans('admin.messages.save', ['name' => trans('admin.grade')]));
+            return redirect()->route('grades.index');
+        } catch (Exception $e) {
+            notify()->error($e->getMessage());
+        }
     }
 
     /**

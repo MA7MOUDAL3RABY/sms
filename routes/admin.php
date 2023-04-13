@@ -7,4 +7,5 @@ Route::get('/', function () {
     return view('pages.dashboard');
 })->name('dashboard-show');
 
-Route::resource('grades', 'Grades\GradeController');
+Route::resource('grades', 'GradeController');
+Route::resource('classrooms', 'ClassroomController');

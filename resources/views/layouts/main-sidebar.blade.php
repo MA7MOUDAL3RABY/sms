@@ -17,14 +17,26 @@
 
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
-                            <div class="pull-left"><i class="ti-calendar"></i><span
+                            <div class="pull-left"><i class="ti-book"></i><span
                                     class="right-nav-text">@lang('admin.grades.title')</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{route('grades.index')}}">All</a> </li>
+                            <li> <a href="{{route('grades.index')}}">@lang('admin.actions.all')</a> </li>
                             <li> <a href="{{route('grades.create')}}">@lang('admin.new_grade')</a> </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
+                            <div class="pull-left"><i class="ti-book"></i><span
+                                    class="right-nav-text">@lang('admin.grades.title')</span></div>
+                            <div class="pull-right"><i class="ti-plus"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
+                            <li> <a href="{{route('classrooms.index')}}">@lang('admin.actions.all')</a> </li>
+                            <li> <a href="{{route('classrooms.create')}}">@lang('admin.new_grade')</a> </li>
                         </ul>
                     </li>
 

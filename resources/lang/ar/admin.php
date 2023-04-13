@@ -1,31 +1,33 @@
 <?php
 
 return [
+    "actions" => [
+        "delete" => "حذف",
+        "edit" => "تعديل",
+        "no" => "لا",
+        "save" => "حفظ",
+        "all" => "الكل",
+        "title" => "الاجراءات",
+        "yes" => "نعم"
+    ],
+    "are_you_sure_to_delete" => "هل انت متأكد من الحذف؟",
+    "dashboard" => "لوحة التحكم",
+    "edit_grade" => "تعديل مرحلة ",
+    "grade" => "مرحلة ",
     "grades" => [
-        "title" => "المراحل الدراسية",
         "create" => [
             "arabic_name" => "الاسم عربي",
             "english_name" => "الاسم انجليزي",
-            "notes_in_arabic" => "ملحوظات بالعربية",
-            "note_in_english" => "ملحوظات بالانجليزية"
-        ]
+            "note_in_english" => "ملحوظات بالانجليزية",
+            "notes_in_arabic" => "ملحوظات بالعربية"
+        ],
+        "title" => "المراحل الدراسية"
     ],
-    "dashboard" => "لوحة التحكم",
-    "new_grade" => "إضافة مرحلة جديدة",
-    "grade" => "مرحلة ",
-    "stage" => "اسم المرحلة ",
-    "notes" => "ملحوظات",
     "id" => "ID",
-    "actions" => [
-        "title" => "الاجراءات",
-        "edit" => "تعديل",
-        "delete" => "حذف",
-        "yes" => "نعم",
-        "no" => "لا",
-        "save" => "حفظ"
-    ],
-    "are_you_sure_to_delete" => "هل انت متأكد من الحذف؟",
     "messages" => [
         "save" => " تم حفظ  :name بنجاح"
-    ]
+    ],
+    "new_grade" => "إضافة مرحلة جديدة",
+    "notes" => "ملحوظات",
+    "stage" => "اسم المرحلة "
 ];

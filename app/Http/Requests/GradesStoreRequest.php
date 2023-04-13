@@ -24,10 +24,19 @@ class GradesStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name_ar' => 'required',
-            'name_en' => 'required',
-            'notes_ar' => 'nullable',
-            'notes_en' => 'nullable',
+            'name.*' => 'required',
+            'name.*' => 'required',
+            'notes.*' => 'required',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name.ar' => trans('admin.grades.create.arabic_name'),
+            'name.en' => trans('admin.grades.create.english_name'),
+            'notes.ar' => trans('admin.grades.create.notes_in_arabic'),
+            'notes.en' => trans('admin.grades.create.note_in_english'),
         ];
     }
 }
