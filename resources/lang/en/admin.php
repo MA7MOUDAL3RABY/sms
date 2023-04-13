@@ -8,9 +8,10 @@ return [
         "save" => "save",
         "all" => "All",
         "title" => "Actions",
-        "yes" => "Yes"
+        "yes" => "Yes",
+        "addition" => "addition"
     ],
-    "are_you_sure_to_delete" => "Are you sure to delete?",
+    "are_you_sure_to_delete" => "Are you sure to delete",
     "dashboard" => "Dashboard",
     "edit_grade" => "edit grade",
     "grade" => "Grade",
@@ -29,5 +30,9 @@ return [
     ],
     "new_grade" => "New Grade",
     "notes" => "Notes",
-    "stage" => "Stage"
+    "stage" => "Stage",
+    "classrooms" => [
+        "title" => "Classrooms"
+    ],
+    "add_a_new_classroom" => "Add a new classroom"
 ];

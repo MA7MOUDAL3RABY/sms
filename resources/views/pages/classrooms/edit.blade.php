@@ -2,7 +2,7 @@
 @section('content')
 <div>
     <div class="my-5"></div>
-    <h2 class="text-lg"> @lang('admin.edit_grade') </h2>
+    <h2 class="my-4 text-xl font-bold"> @lang('admin.edit_grade') </h2>
     <div class="row">
         <div class="col-sm-6">
             <div class="p-4">

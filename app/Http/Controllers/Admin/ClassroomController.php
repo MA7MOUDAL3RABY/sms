@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
+use App\Models\Grade;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
@@ -26,7 +27,9 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        return view('pages.grades.create');
+        $grades = Grade::all();
+        // return $grades; //view('pages.classrooms.create', compact(['grades']));
+        return view('pages.classrooms.create', compact(['grades']));
     }
 
     /**

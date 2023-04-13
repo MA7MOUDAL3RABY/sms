@@ -7,13 +7,15 @@
                     <!-- menu item Dashboard-->
                     <li>
                         <a href="{{route('dashboard-show')}}">
-                            <div class="pull-left"><i class="ti-home"></i><span class="right-nav-text">@lang('admin.dashboard')</span>
+                            <div class="pull-left"><i class="ti-home"></i><span
+                                    class="right-nav-text">@lang('admin.dashboard')</span>
                             </div>
                         </a>
 
                     </li>
                     <!-- menu title -->
-                    {{-- <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">@lang('admin.grades.title')</li> --}}
+                    {{-- <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">@lang('admin.grades.title')</li>
+                    --}}
 
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
@@ -28,15 +30,15 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#calendar-menu">
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#classrooms-menu">
                             <div class="pull-left"><i class="ti-book"></i><span
-                                    class="right-nav-text">@lang('admin.grades.title')</span></div>
+                                    class="right-nav-text">@lang("admin.classrooms.title")</span></div>
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="calendar-menu" class="collapse" data-parent="#sidebarnav">
+                        <ul id="classrooms-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a href="{{route('classrooms.index')}}">@lang('admin.actions.all')</a> </li>
-                            <li> <a href="{{route('classrooms.create')}}">@lang('admin.new_grade')</a> </li>
+                            <li> <a href="{{route('classrooms.create')}}">@lang('admin.add_a_new_classroom')</a> </li>
                         </ul>
                     </li>
 

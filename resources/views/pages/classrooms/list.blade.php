@@ -14,7 +14,7 @@
     <div class="page-title">
         <div class="row">
             <div class="col-sm-6">
-                <h4 class="mb-0"> @lang('admin.dashboard')</h4>
+                <h4 class="my-4 text-xl font-bold"> @lang('admin.classrooms.title')</h4>
             </div>
         </div>
 
