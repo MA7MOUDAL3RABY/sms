@@ -5,7 +5,7 @@
     <h2 class="my-4 text-xl font-bold"> @lang('admin.add_a_new_classroom') </h2>
     <div>
         <div class="my-5"></div>
-        <form action="{{ route('grades.store') }}" method="POST" class="form-group">
+        <form id="classroom-create" action="{{ route('classrooms.store') }}" method="POST" class="form-group">
             @csrf
             <!-- main body -->
             <div>
@@ -15,35 +15,45 @@
                             <div class="repeater">
                                 <div data-repeater-list="classrooms">
                                     <div class="row my-3" data-repeater-item>
-                                        <form>
-                                            <div class="col-lg-2">
-                                                <input class="form-control" type="text"
-                                                    placeholder="{{trans('admin.grades.create.arabic_name')}}" />
+                                        <div class="col-lg-2">
+                                            <input class="form-control" type="text" name="name[ar]"
+                                                value="{{ old('ar') }}"
+                                                placeholder="{{trans('admin.grades.create.arabic_name')}}" />
+                                            @error('name.ar')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input class="form-control" type="text" name="name[en]"
+                                                value="{{ old('en') }}"
+                                                placeholder="{{trans('admin.grades.create.english_name')}}" />
+                                            @error('name.en')
+                                            <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <div class="box">
+                                                <select name="grade" class="form-control p-0">
+                                                    @foreach ($grades as $grade)
+                                                    <option class="p-3" value="{{$grade->id}}">{{$grade->name}}
+                                                    </option>
+                                                    @endforeach
+                                                </select>
+                                                @error('grade')
+                                                <div class="text-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
-                                            <div class="col-lg-2">
-                                                <input class="form-control" type="text"
-                                                    placeholder="{{trans('admin.grades.create.english_name')}}" />
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <div class="box">
-                                                    <select name="grade" class="form-control p-0">
-                                                        @foreach ($grades as $grade)
-                                                        <option class="p-3" value="{{$grade->id}}">{{$grade->name}}
-                                                        </option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-2">
-                                                <input class="btn btn-danger btn-block" data-repeater-delete
-                                                    type="button" value="{{trans('admin.actions.delete')}}" />
-                                            </div>
-                                        </form>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <input class="btn btn-danger btn-block" data-repeater-delete type="button"
+                                                value="{{trans('admin.actions.delete')}}" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row mt-20">
                                     <div class="col-12">
-                                        <input class="button" data-repeater-create type="button" value="{{trans('admin.actions.addition')}}" />
+                                        <input class="button" data-repeater-create type="button"
+                                            value="{{trans('admin.actions.addition')}}" />
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success">
+            <button form="classroom-create" type="submit" class="btn btn-success">
                 @lang('admin.actions.save')
             </button>
         </form>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClassRoomsRequest;
 use App\Models\Classroom;
 use App\Models\Grade;
 use Illuminate\Http\Request;
@@ -38,9 +39,9 @@ class ClassroomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClassRoomsRequest $request)
     {
-        //
+        return $request;
     }
 
     /**
