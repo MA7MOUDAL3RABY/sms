@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Grade;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\GradesStoreRequest;
+use App\Models\Classroom;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -119,6 +120,20 @@ class GradeController extends Controller
      */
     public function destroy(Grade $grade)
     {
-        //
+        $classroomID = Classroom::where('grade_id', $grade->id)->pluck('id');
+
+        if ($classroomID->count() == 0) {
+            try {
+                $grade->delete();
+                notify()->success('Deleted');
+                return redirect()->route('grades.index');
+            } catch (Exception $e) {
+                notify()->error($e->getMessage());
+                return redirect()->back();
+            }
+        } else {
+            notify()->error('There Are Linked Classrooms with this stage');
+            return redirect()->back();
+        }
     }
 }

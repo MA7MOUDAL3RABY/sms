@@ -34,5 +34,6 @@ return [
     "classrooms" => [
         "title" => "الصفوف الدراسية"
     ],
-    "add_a_new_classroom" => "اضافة صف دراسي جديد"
+    "add_a_new_classroom" => "اضافة صف دراسي جديد",
+    "classroom" => "الصف الدراسي"
 ];

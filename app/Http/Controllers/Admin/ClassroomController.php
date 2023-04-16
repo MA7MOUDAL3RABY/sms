@@ -6,15 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ClassRoomsRequest;
 use App\Models\Classroom;
 use App\Models\Grade;
+use Exception;
+use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 
 class ClassroomController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->grades = Grade::all();
+    }
+
+
+    public $grades;
+
     public function index()
     {
         $rooms =  Classroom::all();
@@ -28,9 +34,8 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        $grades = Grade::all();
         // return $grades; //view('pages.classrooms.create', compact(['grades']));
-        return view('pages.classrooms.create', compact(['grades']));
+        return view('pages.classrooms.create', ['grades' => $this->grades]);
     }
 
     /**
@@ -41,7 +46,20 @@ class ClassroomController extends Controller
      */
     public function store(ClassRoomsRequest $request)
     {
-        return $request;
+        try {
+            $creation = Classroom::create([
+                'name' => [
+                    'en' => $request->name['en'],
+                    'ar' => $request->name['ar'],
+                ],
+                'grade_id' => $request->grade,
+            ]);
+            notify()->success('good');
+            return redirect()->back();
+        } catch (Exception $e) {
+            notify()->error($e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
@@ -63,7 +81,7 @@ class ClassroomController extends Controller
      */
     public function edit(Classroom $classroom)
     {
-        //
+        return view('pages.classrooms.edit', ['classroom' => $classroom, 'grades' => $this->grades]);
     }
 
     /**
@@ -73,9 +91,21 @@ class ClassroomController extends Controller
      * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classroom $classroom)
+    public function update(ClassRoomsRequest $request, Classroom $classroom)
     {
-        //
+        try {
+            $classroom->update([
+                'name' => [
+                    'en' => $request->name['en'],
+                    'ar' => $request->name['ar'],
+                ],
+                'grade_id' => intval($request->grade),
+            ]);
+            notify()->success(trans('admin.messages.save', ['name' => trans('admin.grade')]));
+            return redirect()->route('classrooms.index');
+        } catch (Exception $e) {
+            notify()->error($e->getMessage());
+        }
     }
 
     /**
@@ -86,6 +116,13 @@ class ClassroomController extends Controller
      */
     public function destroy(Classroom $classroom)
     {
-        //
+        try {
+            $classroom->delete();
+            notify()->success('deleted');
+            return redirect()->route('classrooms.index');
+        } catch (Exception $e) {
+            notify()->error($e->getMessage());
+            return redirect()->back();
+        }
     }
 }

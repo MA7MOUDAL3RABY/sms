@@ -12,4 +12,10 @@ class Grade extends Model
     public $fillable = ['name', 'notes'];
 
     public $translatable = ['name', 'notes'];
+
+
+    public function classrooms()
+    {
+        return $this->belongsToMany(Classroom::class);
+    }
 }

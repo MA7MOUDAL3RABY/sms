@@ -34,5 +34,6 @@ return [
     "classrooms" => [
         "title" => "Classrooms"
     ],
-    "add_a_new_classroom" => "Add a new classroom"
+    "add_a_new_classroom" => "Add a new classroom",
+    "classroom" => "Classroom"
 ];

@@ -41,9 +41,15 @@
                                         <a class="btn btn-info"
                                             href="{{ route('grades.edit', ['grade' => $grade->id]) }}">
                                             <i class="fa fa-edit"></i> @lang('admin.actions.edit')</a>
-                                        <button class="btn btn-danger text-white"
-                                            @click="openDeleteModel({{$grade->id}})"><i class="fa fa-trash"></i>
-                                            @lang('admin.actions.delete')</button>
+                                        <form class="d-inline-block"
+                                            action="{{route('grades.destroy', ['grade' => $grade->id])}}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger text-white">
+                                                <i class="fa fa-trash"></i>
+                                                @lang('admin.actions.delete')</button>
+                                        </form>
                                     </th>
                                 </tr>
                                 @endforeach

@@ -36,27 +36,19 @@
                             <div class="pull-right"><i class="ti-plus"></i></div>
                             <div class="clearfix"></div>
                         </a>
-                        <ul id="classrooms-menu" class="collapse" data-parent="#sidebarnav">
+                        <ul id="classrooms-menu" class="collapse {{ Route::currentRouteName() == 'classrooms.create' || Route::currentRouteName() == 'classrooms.index' ? 'show' : ''}}" data-parent="#sidebarnav">
                             <li> <a href="{{route('classrooms.index')}}">@lang('admin.actions.all')</a> </li>
                             <li> <a href="{{route('classrooms.create')}}">@lang('admin.add_a_new_classroom')</a> </li>
                         </ul>
                     </li>
 
-                    <li>
-                        <a href="chat-page.html"><i class="ti-comments"></i><span class="right-nav-text">Chat
-                            </span></a>
-                    </li>
-                    <!-- menu item mailbox-->
+
+                    {{-- <!-- menu item mailbox-->
                     <li>
                         <a href="mail-box.html"><i class="ti-email"></i><span class="right-nav-text">Mail
                                 box</span> <span class="badge badge-pill badge-warning float-right mt-1">HOT</span> </a>
-                    </li>
+                    </li> --}}
                     <!-- menu item Charts-->
-
-
-
-                    <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">More Pages</li>
-                    <!-- menu item Custom pages-->
 
 
                     <!-- menu item maps-->
